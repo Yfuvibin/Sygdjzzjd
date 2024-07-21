@@ -1,0 +1,91 @@
+<!DOCTYPE html>
+<html
+    lang="ar">
+    <head>
+        <meta
+            charset="UTF-8">
+            <meta
+                name="viewport"
+                content="width=device-width,
+                initial-scale=1.0">
+                <title>توليدكلماتمرورعشوائية</title>
+                    <style>
+                        body {
+                        font-family: Arial, sans-serif;
+                        text-align: center;
+                        margin: 20px;
+                        }
+                        .password {
+                        font-size: 24px;
+                        color: red;
+                        margin: 10px 0;
+                        }
+                        input[type="text"], input[type="number"] {
+                        font-size: 24px;
+                        text-align: center;
+                        margin: 10px 0;
+                        }
+                        button {
+                        font-size: 20px;
+                        margin: 10px;
+                        }
+                        /* تعديل للكتابة العربية */
+                        html {
+                        direction: rtl;
+                        }
+                    </style>
+                </head>
+                <body>
+                    <h1>توليدكلماتمرورعشوائية</h1>
+                        <div
+                            class="password"
+                            id="password">aaaaaaaaaaaa>
+                            <button
+                                onclick="copyPassword()">نسخ>
+                                <p>طولكلمةالمرور:</p>
+                                    <input
+                                        type="number"
+                                        id="passwordLength"
+                                        value="12"
+                                        min="1">
+                                        <p>تعديلكلمةالمرور:</p>
+                                            <input
+                                                type="text"
+                                                id="inputPassword"
+                                                value="aaaaaaaaaaaa">
+                                                <button
+                                                    onclick="generatePassword()">توليد>
+                                                    
+                                                    <script>
+                                                        const characters = 'abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ0123456789';
+                                                        
+                                                        // Function to generate a random password
+                                                        function generateRandomPassword(length) {
+                                                        let result = '';
+                                                        const charactersLength = characters.length;
+                                                        for (let i = 0; i < length; i++) {
+                                                        result += characters.charAt(Math.floor(Math.random() * charactersLength));
+                                                        }
+                                                        return result;
+                                                        }
+                                                        
+                                                        // Function to generate the next password
+                                                        function generatePassword() {
+                                                        let length = parseInt(document.getElementById('passwordLength').value, 10);
+                                                        let newPassword = generateRandomPassword(length);
+                                                        document.getElementById('password').textContent = newPassword;
+                                                        document.getElementById('inputPassword').value = newPassword;
+                                                        }
+                                                        
+                                                        // Function to copy password to clipboard
+                                                        function copyPassword() {
+                                                        let password = document.getElementById('password').textContent;
+                                                        navigator.clipboard.writeText(password).then(() => {
+                                                        alert('تم نسخ كلمة المرور: ' + password);
+                                                        }, (err) => {
+                                                        console.error('حدث خطأ أثناء نسخ كلمة المرور: ', err);
+                                                        });
+                                                        }
+                                                    </script>
+                                                </body>
+                                            </html>
